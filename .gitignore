@@ -33,3 +33,6 @@ staticfiles/
 .coverage
 .tox/
 .pytest_cache/
+
+# Environment variables
+.env
