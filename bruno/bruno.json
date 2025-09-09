@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "admsc-bruno",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
