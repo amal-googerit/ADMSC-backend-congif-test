@@ -1,5 +1,3 @@
-import redis
-import json
 from django.shortcuts import render
 from django.http import JsonResponse
 from .models import MenuItem, Hero, Partners, FooterLink
