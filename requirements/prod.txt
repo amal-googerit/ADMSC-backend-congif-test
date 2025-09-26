@@ -1,0 +1,6 @@
+# --- Production Dependencies ---
+-r base.txt
+
+# --- Production specific tools ---
+gunicorn==21.2.0
+whitenoise==6.6.0

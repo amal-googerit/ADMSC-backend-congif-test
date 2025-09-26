@@ -4,7 +4,7 @@ json_data = {
     "header": {
         "logo": {"en": "ADMSC", "ar": "نادي أبوظبي للرياضات البحرية"},
         "menu": {
-            "home": {"en": "Homeeeeeee", "ar": "الرئيسية"},
+            "home": {"en": "Home", "ar": "الرئيسية"},
             "sports": {"en": "Sports", "ar": "الرياضات"},
             "academy": {"en": "Academy", "ar": "الأكاديمية"},
             "events": {"en": "Events", "ar": "الفعاليات"},

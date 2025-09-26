@@ -9,6 +9,20 @@ from .utils.redis_test_json import json_data
 redis_client = RedisClient()
 
 
+def home(request):
+    """
+    Simple home view for testing
+    """
+    return JsonResponse({
+        'message': 'Welcome to ADMSC API',
+        'endpoints': {
+            'website_data': '/api/website-data/',
+            'update_redis': '/api/update-redis/',
+            'admin': '/admin/'
+        }
+    })
+
+
 def website_data_api(request):
     """
     API endpoint that returns all website data as JSON
