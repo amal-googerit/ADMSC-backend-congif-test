@@ -44,9 +44,7 @@ This document explains what each file and directory does in your ADMSC MM Backen
 
 ### **Scripts**
 - **`scripts/`** - Deployment and setup scripts
-  - `setup-server.sh` - Server setup script
-  - `deploy.sh` - Deployment script
-  - `setup-webhook-*.sh` - Webhook setup scripts
+  - `set-health-status.sh` - Health status management script
 
 ### **Documentation**
 - **`DEPLOYMENT.md`** - **Single deployment guide** (how to deploy)

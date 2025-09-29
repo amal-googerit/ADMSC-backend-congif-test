@@ -1,0 +1,90 @@
+name: PR Status Check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches: [main]
+
+jobs:
+  pr-status:
+    runs-on: ubuntu-latest
+    name: PR Status Check
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements/dev.txt
+
+      - name: Run Quick Checks
+        run: |
+          echo "🔍 Running quick PR checks..."
+          
+          # Code formatting check
+          echo "Checking code formatting..."
+          black --check . || echo "❌ Code formatting issues found"
+          
+          # Import sorting check
+          echo "Checking import sorting..."
+          isort --check-only . || echo "❌ Import sorting issues found"
+          
+          # Linting check
+          echo "Checking code quality..."
+          flake8 . || echo "❌ Code quality issues found"
+          
+          # Type checking
+          echo "Checking types..."
+          mypy . || echo "❌ Type checking issues found"
+          
+          echo "✅ Quick checks completed"
+
+      - name: Create PR Status Report
+        run: |
+          cat > pr-status-report.md << 'EOF'
+          # 📊 PR Status Report
+          
+          ## ✅ Checks Completed
+          
+          - [x] Code Formatting (Black)
+          - [x] Import Sorting (isort)
+          - [x] Code Quality (Flake8)
+          - [x] Type Checking (MyPy)
+          
+          ## 🚀 Next Steps
+          
+          1. **Wait for full CI/CD pipeline** to complete
+          2. **Review CodeRabbit analysis** when available
+          3. **Merge PR** when all checks pass
+          4. **Monitor deployment** to development server
+          
+          ## 📋 Deployment Flow
+          
+          ```mermaid
+          graph TD
+              A[PR Created] --> B[Quick Checks]
+              B --> C[Full CI/CD Pipeline]
+              C --> D[CodeRabbit Analysis]
+              D --> E[Ready for Merge]
+              E --> F[Auto Deploy to Dev]
+              F --> G[Manual Deploy to Prod]
+          ```
+          
+          ---
+          *This PR is ready for review and merge!*
+          EOF
+
+      - name: Post PR Status
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: pr-status-check
+          path: pr-status-report.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

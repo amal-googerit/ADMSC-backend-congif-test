@@ -213,13 +213,8 @@ make security-deps
 
 ### **Webhook Commands** (Logging Only)
 ```bash
-# Setup webhooks for logging
-make setup-webhook-dev
-make setup-webhook-prod
-
-# Test webhook endpoints
-make test-webhook-dev
-make test-webhook-prod
+# Set health status for PR management
+./scripts/set-health-status.sh <PR_NUMBER> <STATUS>
 ```
 
 ## 📊 Monitoring and Logs

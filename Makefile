@@ -126,29 +126,19 @@ ci-deploy-staging: ## Trigger staging deployment via CI/CD
 	@gh workflow run ci-cd.yml -f environment=staging -f confirm_deployment=DEPLOY
 
 # Webhook Commands (Logging Only)
-setup-webhook-dev: ## Setup GitHub webhook for development logging
-	@echo "Setting up GitHub webhook for development logging..."
-	@./scripts/setup-webhook-dev.sh
+set-health-good: ## Set health status to GOOD for a PR
+	@echo "Setting health status to GOOD..."
+	@read -p "Enter PR number: " pr; \
+	./scripts/set-health-status.sh $$pr GOOD
 
-test-webhook-dev: ## Test development webhook endpoint
-	@echo "Testing development webhook endpoint..."
-	@./test-webhook-dev.sh
+set-health-bad: ## Set health status to BAD for a PR
+	@echo "Setting health status to BAD..."
+	@read -p "Enter PR number: " pr; \
+	./scripts/set-health-status.sh $$pr BAD
 
-webhook-dev-status: ## Check development webhook endpoint status
-	@echo "Checking development webhook endpoint..."
-	@curl -f -s http://localhost:8000/api/webhook/deploy/dev/ && echo "✅ Development webhook endpoint is accessible" || echo "❌ Development webhook endpoint is not accessible"
-
-setup-webhook-prod: ## Setup GitHub webhook for production logging
-	@echo "Setting up GitHub webhook for production logging..."
-	@./scripts/setup-webhook-prod.sh
-
-test-webhook-prod: ## Test production webhook endpoint
-	@echo "Testing production webhook endpoint..."
-	@./test-webhook-prod.sh
-
-webhook-prod-status: ## Check production webhook endpoint status
-	@echo "Checking production webhook endpoint..."
-	@curl -f -s http://localhost/api/webhook/deploy/prod/ && echo "✅ Production webhook endpoint is accessible" || echo "❌ Production webhook endpoint is not accessible"
+health-status: ## Check current health status
+	@echo "Checking current health status..."
+	@curl -s http://localhost:8000/api/health/status/ | python3 -m json.tool
 
 # Security Commands
 security-scan: ## Run security scan locally
@@ -161,21 +151,6 @@ security-deps: ## Check for vulnerable dependencies
 	@safety check
 
 # Legacy Commands (Deprecated - Use CI/CD instead)
-auto-pull-start: ## DEPRECATED: Use CI/CD pipeline instead
-	@echo "⚠️  DEPRECATED: Auto-pull is disabled. Use 'make ci-deploy-dev' instead."
-
-auto-pull-stop: ## DEPRECATED: Use CI/CD pipeline instead
-	@echo "⚠️  DEPRECATED: Auto-pull is disabled. Use 'make ci-deploy-dev' instead."
-
-auto-pull-status: ## DEPRECATED: Use CI/CD pipeline instead
-	@echo "⚠️  DEPRECATED: Auto-pull is disabled. Use 'make ci-status' instead."
-
-auto-pull-logs: ## DEPRECATED: Use CI/CD pipeline instead
-	@echo "⚠️  DEPRECATED: Auto-pull is disabled. Use 'make ci-logs' instead."
-
-setup-webhook: setup-webhook-dev ## Alias for development webhook setup
-test-webhook: test-webhook-dev ## Alias for development webhook test
-webhook-status: webhook-dev-status ## Alias for development webhook status
 
 shell: ## Open Django shell
 	python manage.py shell

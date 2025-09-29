@@ -138,6 +138,8 @@ docker compose -f compose/dev/docker-compose.yml up --build
 - **[Architecture & Flows](docs/ARCHITECTURE_AND_FLOWS.md)** - Complete system architecture
 - **[Project Structure](docs/PROJECT_STRUCTURE.md)** - Detailed project organization
 - **[Deployment Guide](docs/DEPLOYMENT.md)** - Production deployment instructions
+- **[Manual Deployment Workflow](docs/MANUAL_DEPLOYMENT_WORKFLOW.md)** - Manual deployment process with PR management buttons
+- **[Complete CI/CD Flow](docs/COMPLETE_CICD_FLOW.md)** - Comprehensive CI/CD pipeline with PR checks, CodeRabbit analysis, and rollback
 - **[CI/CD Setup](docs/CICD_SETUP_GUIDE.md)** - GitHub Actions configuration
 
 ## 🔧 Configuration
@@ -171,16 +173,32 @@ DATABASE_URL=postgres://django:django@db:5432/django
 REDIS_URL=redis://redis:6379/1
 ```
 
-## 🚀 Deployment
+## 🚀 CI/CD Pipeline
 
-The application supports automated deployment via GitHub Actions:
+The application features a comprehensive CI/CD pipeline:
 
-1. **Push to main branch** triggers CI/CD pipeline
-2. **Manual approval** required for production deployment
-3. **Automated testing** and security scanning
-4. **Docker container** deployment to Digital Ocean
+### **PR Flow**
+1. **PR Created** → Quick quality checks
+2. **Full Pipeline** → Security scan, tests, CodeRabbit AI analysis
+3. **CodeRabbit Analysis** → Detailed code review with diagrams
+4. **Ready for Merge** → All checks pass
 
-See [CI/CD Setup Guide](docs/CICD_SETUP_GUIDE.md) for detailed configuration.
+### **Deployment Flow**
+1. **PR Merged** → Notification posted in PR
+2. **Manual Pull** → You manually pull changes on dev server
+3. **Health Check** → You test and set health status (GOOD/BAD)
+4. **Management Buttons** → Based on health status, different buttons appear
+5. **Revert/Deploy** → Revert if BAD, Deploy to production if GOOD
+
+### **Safety Features**
+- ✅ **Manual control** over all deployments
+- ✅ **Health status management** (GOOD/BAD)
+- ✅ **PR management buttons** (only visible to @amal-googerit)
+- ✅ **Revert functionality** for failed deployments
+- ✅ **Branch deletion** for unwanted changes
+- ✅ **CodeRabbit AI analysis** with flow diagrams
+
+See [Complete CI/CD Flow](docs/COMPLETE_CICD_FLOW.md) for detailed documentation.
 
 ## 🧪 Testing
 
