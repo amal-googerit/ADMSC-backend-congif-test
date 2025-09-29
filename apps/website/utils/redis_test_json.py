@@ -2,7 +2,7 @@ home_data = {
   "header": {
     "logo": '/images/logo/logo.png',
     "menu": {
-      "home": {"en": 'Hoome', "ar": 'الرئيسية', "href": '/'},
+      "home": {"en": 'Home', "ar": 'الرئيسية', "href": '/'},
       "sports": {"en": 'Sports', "ar": 'الرياضات', "href": '/sports'},
       "academy": {"en": 'Academy', "ar": 'الأكاديمية', "href": '/academy'},
       "events": {"en": 'Events', "ar": 'الفعاليات', "href": '/events'},
