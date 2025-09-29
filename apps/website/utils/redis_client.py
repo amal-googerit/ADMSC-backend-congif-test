@@ -1,18 +1,16 @@
 import redis
 import json
 import os
+from django.conf import settings
 
 class RedisClient:
     def __init__(self):
-        self.host = os.getenv("REDIS_HOST", "127.0.0.1")
-        self.port = int(os.getenv("REDIS_PORT", 6379))
-        self.password = os.getenv("REDIS_PASSWORD", None)
-
+        # Use Django's Redis configuration
+        redis_url = getattr(settings, 'CACHES', {}).get('default', {}).get('LOCATION', 'redis://127.0.0.1:6379/1')
+        
         # decode_responses=True → strings instead of bytes
-        self.client = redis.Redis(
-            host=self.host,
-            port=self.port,
-            password=self.password,
+        self.client = redis.from_url(
+            redis_url,
             decode_responses=True,
             socket_timeout=5,
             health_check_interval=30

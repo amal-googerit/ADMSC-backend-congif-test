@@ -65,11 +65,29 @@ brew services start redis
 
 # Install Docker (optional)
 brew install --cask docker
+# Start development environment
+make docker-dev
+
+# Start in background (detached)
+make docker-dev-detached
+
+# Stop all containers
+make docker-stop
+
+# View logs
+make docker-logs
+
+# Check container status
+make docker-status
+
+# Start production environment
+make docker-prod
 ```
 
 #### Ubuntu/Debian
 ```bash
 # Update package list
+
 sudo apt update
 
 # Install Python 3.11

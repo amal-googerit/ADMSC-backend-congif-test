@@ -44,10 +44,22 @@ collectstatic: ## Collect static files
 	python manage.py collectstatic --noinput
 
 docker-dev: ## Run development environment with Docker
-	cd compose/dev && docker-compose up --build
+	cd compose/dev && docker compose up --build
 
 docker-prod: ## Run production environment with Docker
-	cd compose/prod && docker-compose up --build
+	cd compose/prod && docker compose up --build
+
+docker-dev-detached: ## Run development environment with Docker in background
+	cd compose/dev && docker compose up --build -d
+
+docker-stop: ## Stop all Docker containers
+	docker compose -f compose/dev/docker-compose.yml down
+
+docker-logs: ## View Docker logs
+	docker compose -f compose/dev/docker-compose.yml logs -f
+
+docker-status: ## Check Docker container status
+	docker compose -f compose/dev/docker-compose.yml ps
 
 shell: ## Open Django shell
 	python manage.py shell
