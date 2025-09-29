@@ -1,0 +1,57 @@
+# Security Configuration for CI/CD Pipeline
+
+# Security scanning tools
+security_tools:
+  bandit:
+    enabled: true
+    config: ".bandit"
+    severity: medium
+    confidence: medium
+  
+  safety:
+    enabled: true
+    config: "requirements.txt"
+    ignore_ids: []
+  
+  semgrep:
+    enabled: true
+    config: ".semgrep.yml"
+
+# Code quality requirements
+quality_requirements:
+  test_coverage: 80
+  code_style: "black"
+  linting: ["flake8", "mypy"]
+  security_scan: true
+
+# Deployment security
+deployment_security:
+  require_approval: true
+  environment_protection: true
+  secret_rotation: 90  # days
+  audit_logging: true
+
+# Branch protection rules
+branch_protection:
+  main:
+    required_status_checks:
+      - security-scan
+      - quality-tests
+    enforce_admins: true
+    required_pull_request_reviews:
+      required_approving_review_count: 1
+      dismiss_stale_reviews: true
+      require_code_owner_reviews: false   # <-- optional if only you review
+    restrictions:
+      users: ["amal-googerit"]            # <-- add YOUR GitHub username here
+      teams: []                           # <-- remove security-team restriction
+
+  develop:
+    required_status_checks:
+      - security-scan
+      - quality-tests
+    enforce_admins: false
+    required_pull_request_reviews:
+      required_approving_review_count: 1
+      dismiss_stale_reviews: true
+      require_code_owner_reviews: false

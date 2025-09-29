@@ -139,3 +139,8 @@ CACHES = {
 # Session configuration
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 SESSION_CACHE_ALIAS = 'default'
+
+# Webhook Configuration
+WEBHOOK_SECRET = config('WEBHOOK_SECRET', default='')
+DEV_WEBHOOK_SECRET = config('DEV_WEBHOOK_SECRET', default='')
+PROD_WEBHOOK_SECRET = config('PROD_WEBHOOK_SECRET', default='')

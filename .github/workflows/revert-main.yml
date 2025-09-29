@@ -1,0 +1,44 @@
+# .github/workflows/.revert-main.yml
+name: Secret Revert Main Branch (Amal Only)
+
+on:
+  # The workflow only runs when a tag matching 'revert/v*' is pushed
+  push:
+    tags:
+      - 'revert/v*'
+
+jobs:
+  revert:
+    runs-on: ubuntu-latest
+    # MUST BE amal-googerit to execute the job
+    if: github.actor == 'amal-googerit' 
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Use the PAT to allow pushing back to main
+          token: ${{ secrets.PAT_FOR_PUSH }} 
+          fetch-depth: 0 
+          
+      - name: Configure Git
+        run: |
+          git config user.name "Amal's Emergency Reverter"
+          git config user.email "amal-googerit@users.noreply.github.com"
+          
+      - name: Extract Commit SHA from Tag
+        id: extract_sha
+        run: |
+          # Example tag: refs/tags/revert/v-a8c1b4f
+          TAG_NAME=${{ github.ref }}
+          # Isolates the SHA part of the tag (e.g., 'a8c1b4f')
+          SHA=$(echo $TAG_NAME | sed 's/refs\/tags\/revert\/v-//')
+          echo "REVERT_SHA=$SHA" >> $GITHUB_ENV
+          
+      - name: Revert Commit ${{ env.REVERT_SHA }}
+        run: git revert --no-edit ${{ env.REVERT_SHA }}
+        
+      - name: Push Revert Commit to Main
+        run: git push origin main
+
+      - name: Delete Temporary Tag
+        # Clean up the tag immediately after the push so the revert is not visible
+        run: git push origin --delete ${{ github.ref_name }}

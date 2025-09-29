@@ -1,0 +1,29 @@
+[Unit]
+Description=Auto-pull service for ADMSC backend
+After=network.target docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/admsc-backend
+ExecStart=/opt/admsc-backend/scripts/auto-pull.sh
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Environment variables
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/admsc-backend
+ReadWritePaths=/var/log
+ReadWritePaths=/tmp
+
+[Install]
+WantedBy=multi-user.target

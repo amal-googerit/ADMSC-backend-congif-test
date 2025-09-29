@@ -23,6 +23,32 @@ make migrate
 make runserver
 ```
 
+## 🔒 Secure CI/CD Pipeline
+
+This project uses a **secure CI/CD pipeline** for all deployments:
+
+- **Development**: Automatic deployment on push to `develop`/`dev` branches
+- **Production**: Manual approval required via GitHub Actions
+- **Security**: Automated security scanning and quality checks
+- **Audit**: Complete deployment audit trail
+
+### CI/CD Commands
+```bash
+# Check pipeline status
+make ci-status
+
+# Trigger development deployment
+make ci-deploy-dev
+
+# Trigger production deployment
+make ci-deploy-prod
+
+# Run security scan locally
+make security-scan
+```
+
+For complete deployment documentation, see [DEPLOYMENT.md](DEPLOYMENT.md).
+
 ## 📋 Table of Contents
 
 - [Prerequisites](#prerequisites)

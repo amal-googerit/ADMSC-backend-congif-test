@@ -16,6 +16,15 @@ class RedisClient:
             health_check_interval=30
         )
 
+    def set(self, key: str, value, expire: int = None):
+        """Store value in Redis (original method)"""
+        print(f"Setting value for key: {key}")
+        self.client.set(key, value, ex=expire)
+
+    def get(self, key: str):
+        """Get value from Redis (original method)"""
+        return self.client.get(key)
+
     def set_json(self, key: str, value: dict, expire: int = None):
         """Store dict as JSON in Redis"""
         print(f"Setting JSON for key: {key}")
