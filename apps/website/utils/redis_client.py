@@ -1,20 +1,37 @@
 import redis
 import json
 import os
-from django.conf import settings
 
 class RedisClient:
     def __init__(self):
-        # Use Django's Redis configuration
-        redis_url = getattr(settings, 'CACHES', {}).get('default', {}).get('LOCATION', 'redis://127.0.0.1:6379/1')
+        # Try REDIS_URL first (for Docker), fall back to individual variables
+        redis_url = os.getenv("REDIS_URL")
         
-        # decode_responses=True → strings instead of bytes
-        self.client = redis.from_url(
-            redis_url,
-            decode_responses=True,
-            socket_timeout=5,
-            health_check_interval=30
-        )
+        if redis_url:
+            # Use REDIS_URL (Docker setup)
+            self.client = redis.from_url(
+                redis_url,
+                decode_responses=True,
+                socket_timeout=5,
+                health_check_interval=30
+            )
+        else:
+            # Fall back to individual environment variables
+            self.host = os.getenv("REDIS_HOST", "localhost")
+            self.port = int(os.getenv("REDIS_PORT", "6379"))
+            self.username = os.getenv("REDIS_USER")
+            self.password = os.getenv("REDIS_DJANGO_PASSWORD")
+
+            # decode_responses=True → strings instead of bytes
+            self.client = redis.Redis(
+                host=self.host,
+                port=self.port,
+                username=self.username,
+                password=self.password,
+                decode_responses=True,
+                socket_timeout=5,
+                health_check_interval=30,
+            )
 
     def set(self, key: str, value, expire: int = None):
         """Store value in Redis (original method)"""
