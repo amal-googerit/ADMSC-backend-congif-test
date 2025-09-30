@@ -165,6 +165,29 @@ check-all: ## Run all code quality checks
 	@make check-types
 	@echo "✅ All checks completed"
 
+# CI/CD Management Commands (for future use)
+set-health-good: ## Set health status to GOOD for a PR
+	@echo "Setting health status to GOOD..."
+	@read -p "Enter PR number: " pr; \
+	./scripts/set-health-status.sh $$pr GOOD
+
+set-health-bad: ## Set health status to BAD for a PR
+	@echo "Setting health status to BAD..."
+	@read -p "Enter PR number: " pr; \
+	./scripts/set-health-status.sh $$pr BAD
+
+health-status: ## Check current health status
+	@echo "Checking current health status..."
+	@curl -s http://localhost:8000/api/health/status/ | python3 -m json.tool
+
+approve-dev: ## Approve dev testing (run on dev server)
+	@echo "Approving dev testing..."
+	@./scripts/approve-dev.sh
+
+reject-dev: ## Reject dev testing and rollback (run on dev server)
+	@echo "Rejecting dev testing and rolling back..."
+	@./scripts/reject-dev.sh
+
 # Security Commands
 security-scan: ## Run security scan locally
 	@echo "Running security scan..."
