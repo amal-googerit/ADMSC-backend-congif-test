@@ -65,7 +65,7 @@ admsc-mm-backend/
 ├── compose/              # Docker configurations
 ├── docs/                 # Documentation
 ├── requirements/         # Python dependencies
-└── scripts/             # Deployment scripts
+└── scripts/             # CI/CD management scripts
 ```
 
 ### Adding New API Endpoints
@@ -173,9 +173,35 @@ DATABASE_URL=postgres://django:django@db:5432/django
 REDIS_URL=redis://redis:6379/1
 ```
 
+## 🧪 Testing
+
+### **Quick Testing**
+- **Local Tests**: `make test-local` - Comprehensive local environment testing
+- **API Tests**: `make test-api` - Test API endpoints
+- **Code Quality**: `make lint` and `make test` - Run linting and tests
+
+### **CI/CD Testing**
+1. **Create a test PR** to trigger workflows
+2. **Monitor GitHub Actions** for workflow execution
+3. **Test manual approval** process on dev server
+4. **Test production deployment** workflow
+
+*See [Quick Testing Guide](QUICK_TEST.md) for detailed testing instructions.*
+
 ## 🚀 CI/CD Pipeline
 
-The application features a comprehensive CI/CD pipeline:
+The application features a comprehensive CI/CD pipeline with optional integrations:
+
+### **Core Features**
+- ✅ **PR Checks** - Automated quality, security, and test checks
+- ✅ **Dev Approval** - Manual testing workflow with approval/rejection
+- ✅ **Production Deployment** - Secure deployment with rollback capabilities
+
+### **Optional Features** (Can be enabled later)
+- 📢 **Slack Notifications** - Real-time notifications for all CI/CD events
+- 🤖 **CodeRabbit Analysis** - AI-powered code analysis with diagrams
+
+*See [Optional Features Setup Guide](docs/OPTIONAL_FEATURES_SETUP.md) for configuration details.*
 
 ### **PR Flow**
 1. **PR Created** → Quick quality checks

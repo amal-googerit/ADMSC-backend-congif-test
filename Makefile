@@ -125,7 +125,18 @@ ci-deploy-staging: ## Trigger staging deployment via CI/CD
 	@echo "Triggering staging deployment..."
 	@gh workflow run ci-cd.yml -f environment=staging -f confirm_deployment=DEPLOY
 
-# Webhook Commands (Logging Only)
+# Testing Commands
+test-local: ## Run local environment tests
+	@echo "Running local environment tests..."
+	@./scripts/test-local.sh
+
+test-api: ## Test API endpoints
+	@echo "Testing API endpoints..."
+	@curl -s http://localhost:8000/ | python3 -m json.tool
+	@curl -s http://localhost:8000/api/website-data/ | python3 -m json.tool
+	@curl -s http://localhost:8000/api/health/status/ | python3 -m json.tool
+
+# CI/CD Management Commands
 set-health-good: ## Set health status to GOOD for a PR
 	@echo "Setting health status to GOOD..."
 	@read -p "Enter PR number: " pr; \
@@ -139,6 +150,14 @@ set-health-bad: ## Set health status to BAD for a PR
 health-status: ## Check current health status
 	@echo "Checking current health status..."
 	@curl -s http://localhost:8000/api/health/status/ | python3 -m json.tool
+
+approve-dev: ## Approve dev testing (run on dev server)
+	@echo "Approving dev testing..."
+	@./scripts/approve-dev.sh
+
+reject-dev: ## Reject dev testing and rollback (run on dev server)
+	@echo "Rejecting dev testing and rolling back..."
+	@./scripts/reject-dev.sh
 
 # Security Commands
 security-scan: ## Run security scan locally
