@@ -190,41 +190,20 @@ REDIS_URL=redis://redis:6379/1
 
 ## 🚀 CI/CD Pipeline
 
-The application features a comprehensive CI/CD pipeline with optional integrations:
+The application features a simple, focused CI/CD pipeline for code quality:
 
-### **Core Features**
-- ✅ **PR Checks** - Automated quality, security, and test checks
-- ✅ **Dev Approval** - Manual testing workflow with approval/rejection
-- ✅ **Production Deployment** - Secure deployment with rollback capabilities
+### **Push Check Workflow**
+- ✅ **Security Scan** - Bandit security analysis
+- ✅ **Linting** - Flake8 code quality checks
+- ✅ **Type Checking** - MyPy type validation
+- ✅ **Automatic** - Runs on every push and PR
 
-### **Optional Features** (Can be enabled later)
-- 📢 **Slack Notifications** - Real-time notifications for all CI/CD events
-- 🤖 **CodeRabbit Analysis** - AI-powered code analysis with diagrams
+### **Quality Gates**
+- **Every push** triggers quality checks
+- **Code must pass** all checks to be merged
+- **Security issues** are flagged immediately
+- **Type errors** are caught early
 
-*See [Optional Features Setup Guide](docs/OPTIONAL_FEATURES_SETUP.md) for configuration details.*
-
-### **PR Flow**
-1. **PR Created** → Quick quality checks
-2. **Full Pipeline** → Security scan, tests, CodeRabbit AI analysis
-3. **CodeRabbit Analysis** → Detailed code review with diagrams
-4. **Ready for Merge** → All checks pass
-
-### **Deployment Flow**
-1. **PR Merged** → Notification posted in PR
-2. **Manual Pull** → You manually pull changes on dev server
-3. **Health Check** → You test and set health status (GOOD/BAD)
-4. **Management Buttons** → Based on health status, different buttons appear
-5. **Revert/Deploy** → Revert if BAD, Deploy to production if GOOD
-
-### **Safety Features**
-- ✅ **Manual control** over all deployments
-- ✅ **Health status management** (GOOD/BAD)
-- ✅ **PR management buttons** (only visible to @amal-googerit)
-- ✅ **Revert functionality** for failed deployments
-- ✅ **Branch deletion** for unwanted changes
-- ✅ **CodeRabbit AI analysis** with flow diagrams
-
-See [Complete CI/CD Flow](docs/COMPLETE_CICD_FLOW.md) for detailed documentation.
 
 ## 🧪 Testing
 

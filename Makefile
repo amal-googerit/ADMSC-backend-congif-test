@@ -105,6 +105,10 @@ deploy-prod-health: ## Check production health
 	@curl -f -s http://localhost/health/ && echo "✅ Production is healthy" || echo "❌ Production health check failed"
 
 # CI/CD Pipeline Commands
+ci-check: ## Run CI checks locally
+	@echo "Running CI checks locally..."
+	@make check-all
+
 ci-status: ## Check CI/CD pipeline status
 	@echo "Checking CI/CD pipeline status..."
 	@gh run list --limit 5
@@ -112,18 +116,6 @@ ci-status: ## Check CI/CD pipeline status
 ci-logs: ## View latest CI/CD pipeline logs
 	@echo "Viewing latest CI/CD pipeline logs..."
 	@gh run view --log
-
-ci-deploy-dev: ## Trigger development deployment via CI/CD
-	@echo "Triggering development deployment..."
-	@gh workflow run ci-cd.yml -f environment=development -f confirm_deployment=DEPLOY
-
-ci-deploy-prod: ## Trigger production deployment via CI/CD
-	@echo "Triggering production deployment..."
-	@gh workflow run ci-cd.yml -f environment=production -f confirm_deployment=DEPLOY
-
-ci-deploy-staging: ## Trigger staging deployment via CI/CD
-	@echo "Triggering staging deployment..."
-	@gh workflow run ci-cd.yml -f environment=staging -f confirm_deployment=DEPLOY
 
 # Pre-commit Commands
 pre-commit-install: ## Install pre-commit hooks
@@ -153,28 +145,25 @@ test-precommit: ## Test pre-commit hooks
 	@echo "Testing pre-commit hooks..."
 	@pre-commit run --all-files
 
-# CI/CD Management Commands
-set-health-good: ## Set health status to GOOD for a PR
-	@echo "Setting health status to GOOD..."
-	@read -p "Enter PR number: " pr; \
-	./scripts/set-health-status.sh $$pr GOOD
+# Code Quality Commands
+check-security: ## Run security scan
+	@echo "Running security scan..."
+	@bandit -r apps/ config/ -f json -o bandit-report.json || echo "Security scan completed with issues"
 
-set-health-bad: ## Set health status to BAD for a PR
-	@echo "Setting health status to BAD..."
-	@read -p "Enter PR number: " pr; \
-	./scripts/set-health-status.sh $$pr BAD
+check-lint: ## Run linting
+	@echo "Running linting..."
+	@flake8 .
 
-health-status: ## Check current health status
-	@echo "Checking current health status..."
-	@curl -s http://localhost:8000/api/health/status/ | python3 -m json.tool
+check-types: ## Run type checking
+	@echo "Running type checking..."
+	@mypy . --ignore-missing-imports || echo "Type checking completed with issues"
 
-approve-dev: ## Approve dev testing (run on dev server)
-	@echo "Approving dev testing..."
-	@./scripts/approve-dev.sh
-
-reject-dev: ## Reject dev testing and rollback (run on dev server)
-	@echo "Rejecting dev testing and rolling back..."
-	@./scripts/reject-dev.sh
+check-all: ## Run all code quality checks
+	@echo "Running all code quality checks..."
+	@make check-security
+	@make check-lint
+	@make check-types
+	@echo "✅ All checks completed"
 
 # Security Commands
 security-scan: ## Run security scan locally

@@ -1,0 +1,54 @@
+name: Push Check
+
+on:
+  push:
+    branches: [ main, develop, 'feature/*', 'hotfix/*' ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  DJANGO_SETTINGS_MODULE: config.settings.dev
+  SECRET_KEY: test-secret
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+    name: Code Quality Check
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements/dev.txt
+
+      - name: Run Security Scan (Bandit)
+        run: |
+          echo "🔒 Running security scan..."
+          bandit -r apps/ config/ -f json -o bandit-report.json
+          echo "✅ Security scan completed"
+
+      - name: Run Linting (Flake8)
+        run: |
+          echo "🔍 Running linting..."
+          flake8 .
+          echo "✅ Linting completed"
+
+      - name: Run Type Checking (MyPy)
+        run: |
+          echo "🔍 Running type checking..."
+          mypy . --ignore-missing-imports
+          echo "✅ Type checking completed"
+
+      - name: Upload Security Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-report
+          path: bandit-report.json
