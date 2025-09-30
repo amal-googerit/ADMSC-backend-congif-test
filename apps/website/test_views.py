@@ -1,12 +1,14 @@
 """
 Additional test cases for website views.
 """
-import pytest
-from django.test import TestCase, Client
-from django.urls import reverse
-from django.contrib.auth import get_user_model
 
-from .models import MenuItem, Hero, Partners, FooterLink
+from django.contrib.auth import get_user_model
+from django.test import Client, TestCase
+from django.urls import reverse
+
+import pytest
+
+from .models import FooterLink, Hero, MenuItem, Partners
 
 User = get_user_model()
 
@@ -18,31 +20,24 @@ class TestWebsiteViews:
     def test_home_view_returns_200(self):
         """Test that home view returns 200 status code."""
         client = Client()
-        response = client.get('/')
+        response = client.get("/")
         assert response.status_code == 200
 
     def test_admin_redirects_to_login(self):
         """Test that admin view redirects to login."""
         client = Client()
-        response = client.get('/admin/')
+        response = client.get("/admin/")
         assert response.status_code == 302
 
     def test_home_view_with_data(self):
         """Test home view with sample data."""
         client = Client()
-        
+
         # Create test data
-        MenuItem.objects.create(
-            label_en="Home",
-            route="/",
-            order=1
-        )
-        Hero.objects.create(
-            title_en="Test Title",
-            description_en="Test Description"
-        )
-        
-        response = client.get('/')
+        MenuItem.objects.create(label_en="Home", route="/", order=1)
+        Hero.objects.create(title_en="Test Title", description_en="Test Description")
+
+        response = client.get("/")
         assert response.status_code == 200
         assert b"Test Title" in response.content
 
@@ -54,9 +49,7 @@ class TestModelCreation:
     def test_menu_item_creation(self):
         """Test MenuItem model creation."""
         menu_item = MenuItem.objects.create(
-            label_en="Test Menu",
-            route="/test",
-            order=1
+            label_en="Test Menu", route="/test", order=1
         )
         assert menu_item.label_en == "Test Menu"
         assert menu_item.route == "/test"
@@ -65,8 +58,7 @@ class TestModelCreation:
     def test_hero_creation(self):
         """Test Hero model creation."""
         hero = Hero.objects.create(
-            title_en="Test Hero",
-            description_en="Test Description"
+            title_en="Test Hero", description_en="Test Description"
         )
         assert hero.title_en == "Test Hero"
         assert str(hero) == "Test Hero"
@@ -74,9 +66,7 @@ class TestModelCreation:
     def test_partners_creation(self):
         """Test Partners model creation."""
         partner = Partners.objects.create(
-            name_en="Test Partner",
-            image="test.jpg",
-            order=1
+            name_en="Test Partner", image="test.jpg", order=1
         )
         assert partner.name_en == "Test Partner"
         assert str(partner) == "Partners #1"
@@ -84,10 +74,7 @@ class TestModelCreation:
     def test_footer_link_creation(self):
         """Test FooterLink model creation."""
         footer_link = FooterLink.objects.create(
-            key="test",
-            label_en="Test Link",
-            route="/test",
-            order=1
+            key="test", label_en="Test Link", route="/test", order=1
         )
         assert footer_link.key == "test"
         assert footer_link.label_en == "Test Link"

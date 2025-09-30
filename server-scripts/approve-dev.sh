@@ -84,14 +84,14 @@ curl -s -X PATCH \
 if [ $? -eq 0 ]; then
     log "✅ Dev testing approved successfully!"
     log "🚀 Production deployment can now be triggered"
-    
+
     # Close any related issues
     log "📝 Closing related GitHub issues..."
-    
+
     ISSUES=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
       "https://api.github.com/repos/$REPO/issues?state=open&labels=testing,manual-approval" | \
       jq -r '.[] | select(.title | contains("Manual Testing Required")) | .number')
-    
+
     for issue in $ISSUES; do
         if [ ! -z "$issue" ] && [ "$issue" != "null" ]; then
             curl -s -X POST \
@@ -101,17 +101,17 @@ if [ $? -eq 0 ]; then
               -d '{
                 "body": "✅ **Manual testing approved by @amal-googerit**\n\nDev testing completed successfully. Ready for production deployment."
               }'
-            
+
             curl -s -X PATCH \
               -H "Authorization: token $GITHUB_TOKEN" \
               -H "Accept: application/vnd.github.v3+json" \
               "https://api.github.com/repos/$REPO/issues/$issue" \
               -d '{"state": "closed"}'
-            
+
             log "📝 Closed issue #$issue"
         fi
     done
-    
+
     echo ""
     log "🎉 Dev approval process completed!"
     log "📋 Next steps:"
@@ -119,7 +119,7 @@ if [ $? -eq 0 ]; then
     log "2. Click 'Run workflow'"
     log "3. Select mode: 'deploy'"
     log "4. Click 'Run workflow'"
-    
+
 else
     error "Failed to update check run status"
 fi

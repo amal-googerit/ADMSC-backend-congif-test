@@ -1,7 +1,5 @@
 from django.db import models
 
-from django.db import models
-
 
 # ---------- Header ----------
 class MenuItem(models.Model):

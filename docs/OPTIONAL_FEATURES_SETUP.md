@@ -19,7 +19,7 @@ Add these secrets to your GitHub repository (Settings → Secrets and variables 
 # Slack Integration (Optional)
 SLACK_WEBHOOK_URL=https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK
 
-# CodeRabbit Integration (Optional) 
+# CodeRabbit Integration (Optional)
 OPENAI_API_KEY=your-openai-api-key
 ```
 

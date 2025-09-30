@@ -7,12 +7,12 @@ security_tools:
     config: ".bandit"
     severity: medium
     confidence: medium
-  
+
   safety:
     enabled: true
     config: "requirements.txt"
     ignore_ids: []
-  
+
   semgrep:
     enabled: true
     config: ".semgrep.yml"

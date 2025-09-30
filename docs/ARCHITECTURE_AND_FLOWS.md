@@ -112,20 +112,20 @@ graph TD
     A[Client Request] --> B[Nginx Load Balancer]
     B --> C[Django Application]
     C --> D{Request Type}
-    
+
     D -->|API Data| E[Website Data View]
     D -->|Update Cache| F[Update Redis View]
     D -->|Admin| G[Django Admin]
-    
+
     E --> H{Data in Redis?}
     H -->|Yes| I[Return Cached Data]
     H -->|No| J[Query Database]
     J --> K[Cache in Redis]
     K --> L[Return Data]
-    
+
     F --> M[Update Redis Cache]
     M --> N[Return Success]
-    
+
     I --> O[JSON Response]
     L --> O
     N --> O
@@ -139,13 +139,13 @@ graph TD
     A[Admin Updates Data] --> B[Django Admin Interface]
     B --> C[Database Update]
     C --> D[PostgreSQL]
-    
+
     E[API Request] --> F{Check Redis Cache}
     F -->|Cache Hit| G[Return Cached Data]
     F -->|Cache Miss| H[Query Database]
     H --> I[Store in Redis]
     I --> J[Return Data]
-    
+
     K[Manual Cache Update] --> L[Update Redis API]
     L --> M[Store JSON Data]
     M --> N[Set TTL]
@@ -246,7 +246,7 @@ erDiagram
         string route
         int order
     }
-    
+
     Hero {
         int id PK
         string title_en
@@ -257,7 +257,7 @@ erDiagram
         string button_ar
         string background_image
     }
-    
+
     Partners {
         int id PK
         string name_en
@@ -265,7 +265,7 @@ erDiagram
         string image
         int order
     }
-    
+
     FooterLink {
         int id PK
         string key
@@ -359,7 +359,7 @@ graph TD
     B -->|No| D[Query Database]
     D --> E[Store in Cache]
     E --> F[Return Data]
-    
+
     G[Data Update] --> H[Invalidate Cache]
     H --> I[Update Database]
     I --> J[Refresh Cache]
@@ -402,22 +402,22 @@ services:
     - Gunicorn WSGI Server
     - Django App
     - API Endpoints
-    
+
   nginx:        # Reverse Proxy
     - SSL Termination
     - Static File Serving
     - Load Balancing
-    
+
   db:           # PostgreSQL Database
     - Data Storage
     - Migrations
     - Backups
-    
+
   redis:        # Cache Layer
     - Session Storage
     - API Caching
     - JSON Data
-    
+
   certbot:      # SSL Management
     - Let's Encrypt
     - Auto-renewal

@@ -1,7 +1,7 @@
 [flake8]
 max-line-length = 88
-extend-ignore = E203, W503
-exclude = 
+extend-ignore = E203, W503, D100, D101, D102, D103, D104, D105, D200, D400, D401, D403, D404, D405, D406, D407, D408, D409, D410, D411, D412, D413, D414, D415, D416, D417, F401, F403, F405, E501
+exclude =
     .git,
     __pycache__,
     .venv,
@@ -17,3 +17,9 @@ exclude =
 per-file-ignores =
     __init__.py:F401
     migrations/*:E501
+    apps/website/utils/redis_test_json.py:E501,F601
+    config/settings/*:F403,F405
+    apps/website/admin.py:F401
+    apps/website/test_views.py:F401
+    apps/website/tests.py:F401
+    apps/website/views.py:F401

@@ -125,6 +125,19 @@ ci-deploy-staging: ## Trigger staging deployment via CI/CD
 	@echo "Triggering staging deployment..."
 	@gh workflow run ci-cd.yml -f environment=staging -f confirm_deployment=DEPLOY
 
+# Pre-commit Commands
+pre-commit-install: ## Install pre-commit hooks
+	@echo "Installing pre-commit hooks..."
+	@pre-commit install
+
+pre-commit-run: ## Run pre-commit hooks on all files
+	@echo "Running pre-commit hooks on all files..."
+	@pre-commit run --all-files
+
+pre-commit-update: ## Update pre-commit hooks
+	@echo "Updating pre-commit hooks..."
+	@pre-commit autoupdate
+
 # Testing Commands
 test-local: ## Run local environment tests
 	@echo "Running local environment tests..."
@@ -135,6 +148,10 @@ test-api: ## Test API endpoints
 	@curl -s http://localhost:8000/ | python3 -m json.tool
 	@curl -s http://localhost:8000/api/website-data/ | python3 -m json.tool
 	@curl -s http://localhost:8000/api/health/status/ | python3 -m json.tool
+
+test-precommit: ## Test pre-commit hooks
+	@echo "Testing pre-commit hooks..."
+	@pre-commit run --all-files
 
 # CI/CD Management Commands
 set-health-good: ## Set health status to GOOD for a PR

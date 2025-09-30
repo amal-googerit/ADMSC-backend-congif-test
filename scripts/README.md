@@ -8,7 +8,7 @@ This directory contains all the CI/CD management scripts for the Django applicat
 
 #### `set-health-status.sh`
 **Purpose**: Set health status for a PR (GOOD or BAD)
-**Usage**: 
+**Usage**:
 ```bash
 ./scripts/set-health-status.sh <PR_NUMBER> <STATUS>
 ```

@@ -1,19 +1,22 @@
-import redis
 import json
 import os
 
+import redis
+
+
 class RedisClient:
-    def __init__(self):
+    def __init__(self) -> None:
+        """Initialize Redis client with configuration from environment variables."""
         # Try REDIS_URL first (for Docker), fall back to individual variables
         redis_url = os.getenv("REDIS_URL")
-        
+
         if redis_url:
             # Use REDIS_URL (Docker setup)
             self.client = redis.from_url(
                 redis_url,
                 decode_responses=True,
                 socket_timeout=5,
-                health_check_interval=30
+                health_check_interval=30,
             )
         else:
             # Fall back to individual environment variables

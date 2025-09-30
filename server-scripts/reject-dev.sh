@@ -167,13 +167,13 @@ for issue in $ISSUES; do
           -d '{
             "body": "❌ **Manual testing failed and rejected by @amal-googerit**\n\nDev testing failed. Automatic rollback has been performed to last successful production deployment."
           }'
-        
+
         curl -s -X PATCH \
           -H "Authorization: token $GITHUB_TOKEN" \
           -H "Accept: application/vnd.github.v3+json" \
           "https://api.github.com/repos/$REPO/issues/$issue" \
           -d '{"state": "closed"}'
-        
+
         log "📝 Closed issue #$issue"
     fi
 done

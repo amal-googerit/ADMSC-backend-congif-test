@@ -167,13 +167,13 @@ for issue in $ISSUES; do
           -d '{
             "body": "❌ **Manual testing failed and rejected by @amal-googerit**\n\nDev testing failed. Automatic rollback has been performed to last successful production deployment."
           }'
-        
+
         curl -s -X PATCH \
           -H "Authorization: token $GITHUB_TOKEN" \
           -H "Accept: application/vnd.github.v3+json" \
           "https://api.github.com/repos/$REPO/issues/$issue" \
           -d '{"state": "closed"}'
-        
+
         log "📝 Closed issue #$issue"
     fi
 done
@@ -185,7 +185,7 @@ log "📝 GitHub issue created describing the rollback"
 # Send Slack notification if enabled
 if [ "$ENABLE_SLACK" = "true" ] && [ ! -z "$SLACK_WEBHOOK_URL" ]; then
     log "📢 Sending Slack notification..."
-    
+
     SLACK_MESSAGE="{
       \"text\": \"❌ Dev Testing Rejected - Rollback Performed\",
       \"blocks\": [
@@ -226,7 +226,7 @@ if [ "$ENABLE_SLACK" = "true" ] && [ ! -z "$SLACK_WEBHOOK_URL" ]; then
         }
       ]
     }"
-    
+
     curl -X POST "$SLACK_WEBHOOK_URL" \
       -H "Content-Type: application/json" \
       -d "$SLACK_MESSAGE" || warning "Failed to send Slack notification"

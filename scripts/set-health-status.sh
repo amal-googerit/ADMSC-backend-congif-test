@@ -74,7 +74,7 @@ RESPONSE=$(curl -s -X POST "$API_URL" \
 if echo "$RESPONSE" | grep -q "success"; then
     echo -e "${GREEN}✅ Health status set successfully!${NC}"
     echo "Response: $RESPONSE"
-    
+
     # Show next steps based on status
     if [ "$STATUS" = "GOOD" ]; then
         echo ""

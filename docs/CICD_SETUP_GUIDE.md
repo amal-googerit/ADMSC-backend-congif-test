@@ -341,7 +341,7 @@ docker pull ghcr.io/YOUR_USERNAME/YOUR_REPO:latest
    ```bash
    # Test health endpoint
    curl http://your-droplet-ip/health/
-   
+
    # Test API endpoints
    curl http://your-droplet-ip/api/website-data/
    ```
@@ -691,10 +691,10 @@ docker compose -f compose/prod/docker-compose.yml exec web ls -la /code/staticfi
    ```bash
    # Test health endpoint
    curl http://your-droplet-ip/health/
-   
+
    # Test API
    curl http://your-droplet-ip/api/website-data/
-   
+
    # Check application logs
    ssh root@your-droplet-ip
    cd /opt/admsc-backend

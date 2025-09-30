@@ -1,197 +1,206 @@
 home_data = {
-  "header": {
-    "logo": '/images/logo/logo.png',
-    "menu": {
-      "home": {"en": 'Home', "ar": 'الرئيسية', "href": '/'},
-      "sports": {"en": 'Sports', "ar": 'الرياضات', "href": '/sports'},
-      "academy": {"en": 'Academy', "ar": 'الأكاديمية', "href": '/academy'},
-      "events": {"en": 'Events', "ar": 'الفعاليات', "href": '/events'},
-      "media": {"en": 'Media', "ar": 'الوسائط', "href": '/media'},
-      "contact": {"en": 'Contact', "ar": 'اتصال', "href": '/contact'},
+    "header": {
+        "logo": "/images/logo/logo.png",
+        "menu": {
+            "home": {"en": "Home", "ar": "الرئيسية", "href": "/"},
+            "sports": {"en": "Sports", "ar": "الرياضات", "href": "/sports"},
+            "academy": {"en": "Academy", "ar": "الأكاديمية", "href": "/academy"},
+            "events": {"en": "Events", "ar": "الفعاليات", "href": "/events"},
+            "media": {"en": "Media", "ar": "الوسائط", "href": "/media"},
+            "contact": {"en": "Contact", "ar": "اتصال", "href": "/contact"},
+        },
+        "button": {
+            "en": "Club Membership",
+            "ar": "عضوية النادي",
+            "href": "/membership",
+        },
     },
-    "button": {"en": 'Club Membership', "ar": 'عضوية النادي', "href": '/membership'},
-  },
-  "hero": {
-    "banners": [
-      {
-        "flag": '/images/flags/ar.png',
-        "description": {
-          "en": 'Formula 2 World Championship, Brindisi Italy, 23rd - 26th June.',
-          "ar": 'بطولة العالم للفورمولا 2، برينديسي - إيطاليا، 23 - 26 يونيو.',
+    "hero": {
+        "banners": [
+            {
+                "flag": "/images/flags/ar.png",
+                "description": {
+                    "en": "Formula 2 World Championship, Brindisi Italy, 23rd - 26th June.",
+                    "ar": "بطولة العالم للفورمولا 2، برينديسي - إيطاليا، 23 - 26 يونيو.",
+                },
+            },
+            {
+                "flag": "/images/flags/ar.png",
+                "description": {
+                    "en": "Formula 2 World Championship, Cariati Italy, 30th June / 1st July.",
+                    "ar": "بطولة العالم للفورمولا 2، كارياتي - إيطاليا، 30 يونيو / 1 يوليو.",
+                },
+            },
+            {
+                "flag": "/images/flags/ar.png",
+                "description": {
+                    "en": "Formula 1 World Championship, France, 1st July.",
+                    "ar": "بطولة العالم للفورمولا 1، فرنسا، 1 يوليو.",
+                },
+            },
+        ],
+        "hero_background": "/images/others/hero.png",
+        "title": {
+            "en": "The Heartbeat of Marine Sports in Abu Dhabi",
+            "ar": "نبض الرياضات البحرية في أبوظبي",
         },
-      },
-      {
-        "flag": '/images/flags/ar.png',
         "description": {
-          "en": 'Formula 2 World Championship, Cariati Italy, 30th June / 1st July.',
-          "ar": 'بطولة العالم للفورمولا 2، كارياتي - إيطاليا، 30 يونيو / 1 يوليو.',
+            "en": 'Experience Abu Dhabi"s world-class marine sports — from traditional dhow sailing to high-speed jet ski races. Join the waves, embrace the thrill, and celebrate our heritage.',
+            "ar": "اختبر أرقى الرياضات البحرية في أبوظبي — من سباقات الداو التقليدية إلى سباقات الدراجات المائية السريعة. انطلق مع الأمواج، عِش الإثارة، واحتفل بتراثنا.",
         },
-      },
-      {
-        "flag": '/images/flags/ar.png',
-        "description": {
-          "en": 'Formula 1 World Championship, France, 1st July.',
-          "ar": 'بطولة العالم للفورمولا 1، فرنسا، 1 يوليو.',
+        "button": {
+            "en": "Discover More",
+            "ar": "اكتشف المزيد",
+            "href": "/",
         },
-      },
-    ],
-    "hero_background": '/images/others/hero.png',
-    "title": {
-      "en": 'The Heartbeat of Marine Sports in Abu Dhabi',
-      "ar": 'نبض الرياضات البحرية في أبوظبي',
     },
-    "description": {
-      "en": 'Experience Abu Dhabi"s world-class marine sports — from traditional dhow sailing to high-speed jet ski races. Join the waves, embrace the thrill, and celebrate our heritage.',
-      "ar": 'اختبر أرقى الرياضات البحرية في أبوظبي — من سباقات الداو التقليدية إلى سباقات الدراجات المائية السريعة. انطلق مع الأمواج، عِش الإثارة، واحتفل بتراثنا.',
+    "explore": {
+        "items": [
+            {
+                "id": "1",
+                "name": {"en": "FISHING", "ar": "صيد الأسماك"},
+                "icon": "/images/cards/card1.png",
+                "category": "traditional",
+                "description": {
+                    "en": "Traditional rowing that showcases teamwork, endurance, and Emirati heritage.",
+                    "ar": "التجديف التقليدي الذي يجسد العمل الجماعي، والتحمل، والتراث الإماراتي.",
+                },
+            },
+            {
+                "id": "2",
+                "name": {"en": "TAFREES", "ar": "تَفْريس"},
+                "icon": "/images/cards/card1.png",
+                "category": "traditional",
+                "description": {
+                    "en": "Traditional rowing that showcases teamwork, endurance, and Emirati heritage.",
+                    "ar": "التجديف التقليدي الذي يجسد العمل الجماعي، والتحمل، والتراث الإماراتي.",
+                },
+            },
+            {
+                "id": "3",
+                "name": {"en": "FLYBOARD", "ar": "فلاي بورد"},
+                "icon": "/images/cards/card2.png",
+                "category": "modern",
+                "description": {
+                    "en": "Traditional rowing that showcases teamwork, endurance, and Emirati heritage.",
+                    "ar": "التجديف التقليدي الذي يجسد العمل الجماعي، والتحمل، والتراث الإماراتي.",
+                },
+            },
+            {
+                "id": "4",
+                "name": {"en": "WAKEBOARD", "ar": "ويك بورد"},
+                "icon": "/images/cards/card3.png",
+                "category": "modern",
+                "description": {
+                    "en": "Traditional rowing that showcases teamwork, endurance, and Emirati heritage.",
+                    "ar": "التجديف التقليدي الذي يجسد العمل الجماعي، والتحمل، والتراث الإماراتي.",
+                },
+            },
+            {
+                "id": "5",
+                "name": {"en": "JET SKI", "ar": "جت سكي"},
+                "icon": "/images/cards/card4.png",
+                "category": "modern",
+                "description": {
+                    "en": "Traditional rowing that showcases teamwork, endurance, and Emirati heritage.",
+                    "ar": "التجديف التقليدي الذي يجسد العمل الجماعي، والتحمل، والتراث الإماراتي.",
+                },
+            },
+            {
+                "id": "6",
+                "name": {"en": "FORMULA 4", "ar": "فورمولا 4"},
+                "icon": "/images/cards/card5.png",
+                "category": "modern",
+                "description": {
+                    "en": "Traditional rowing that showcases teamwork, endurance, and Emirati heritage.",
+                    "ar": "التجديف التقليدي الذي يجسد العمل الجماعي، والتحمل، والتراث الإماراتي.",
+                },
+            },
+            {
+                "id": "7",
+                "name": {"en": "FORMULA 4", "ar": "فورمولا 4"},
+                "icon": "/images/cards/card3.png",
+                "category": "modern",
+                "description": {
+                    "en": "Traditional rowing that showcases teamwork, endurance, and Emirati heritage.",
+                    "ar": "التجديف التقليدي الذي يجسد العمل الجماعي، والتحمل، والتراث الإماراتي.",
+                },
+            },
+            {
+                "id": "8",
+                "name": {"en": "FORMULA 4", "ar": "فورمولا 4"},
+                "icon": "/images/cards/card1.png",
+                "category": "modern",
+                "description": {
+                    "en": "Traditional rowing that showcases teamwork, endurance, and Emirati heritage.",
+                    "ar": "التجديف التقليدي الذي يجسد العمل الجماعي، والتحمل، والتراث الإماراتي.",
+                },
+            },
+        ],
+        "filters": [
+            {"key": "all", "label": {"en": "All", "ar": "الكل"}},
+            {
+                "key": "traditional",
+                "label": {"en": "Traditional Races", "ar": "السباقات التقليدية"},
+            },
+            {
+                "key": "modern",
+                "label": {"en": "Modern Races", "ar": "السباقات الحديثة"},
+            },
+        ],
     },
-    "button": {
-      "en": 'Discover More',
-      "ar": 'اكتشف المزيد',
-      "href": '/',
+    "experience": {
+        "section_title": {
+            "en": {
+                "line_one": "Experience",
+                "line_two": "More Than Marine Sports",
+            },
+            "ar": {
+                "line_one": "اكتشف",
+                "line_two": "أكثر من مجرد الرياضات البحرية",
+            },
+        },
+        "content": [
+            {
+                "id": 1,
+                "title": {
+                    "en": "Our Services",
+                    "ar": "خدماتنا",
+                },
+                "description": {
+                    "en": "Discover a range of thrilling marine sports and activities tailored for every adventurer. Join us to experience the excitement!",
+                    "ar": "اكتشف مجموعة من الرياضات البحرية والأنشطة المثيرة المصممة لكل مغامر. انضم إلينا لتجربة الحماس!",
+                },
+                "image": "/images/experience/card1.png",
+                "defaultOpen": True,
+            },
+            {
+                "id": 2,
+                "title": {
+                    "en": "Team Abu Dhabi",
+                    "ar": "فريق أبوظبي",
+                },
+                "description": {
+                    "en": "Discover a range of thrilling marine sports and activities tailored for every adventurer. Join us to experience the excitement!",
+                    "ar": "اكتشف مجموعة من الرياضات البحرية والأنشطة المثيرة المصممة لكل مغامر. انضم إلينا لتجربة الحماس!",
+                },
+                "image": "/images/experience/card2.png",
+            },
+            {
+                "id": 3,
+                "title": {
+                    "en": "ADMSC Magazine",
+                    "ar": "مجلة نادي أبوظبي للرياضات البحرية",
+                },
+                "description": {
+                    "en": "Discover a range of thrilling marine sports and activities tailored for every adventurer. Join us to experience the excitement!",
+                    "ar": "اكتشف مجموعة من الرياضات البحرية والأنشطة المثيرة المصممة لكل مغامر. انضم إلينا لتجربة الحماس!",
+                },
+                "image": "/images/experience/card3.png",
+            },
+        ],
     },
-  },
-  "explore": {
-    "items": [
-      {
-        "id": '1',
-        "name": {"en": 'FISHING', "ar": 'صيد الأسماك'},
-        "icon": '/images/cards/card1.png',
-        "category": 'traditional',
-        "description": {
-          "en": 'Traditional rowing that showcases teamwork, endurance, and Emirati heritage.',
-          "ar": 'التجديف التقليدي الذي يجسد العمل الجماعي، والتحمل، والتراث الإماراتي.',
-        },
-      },
-      {
-        "id": '2',
-        "name": {"en": 'TAFREES', "ar": 'تَفْريس'},
-        "icon": '/images/cards/card1.png',
-        "category": 'traditional',
-        "description": {
-          "en": 'Traditional rowing that showcases teamwork, endurance, and Emirati heritage.',
-          "ar": 'التجديف التقليدي الذي يجسد العمل الجماعي، والتحمل، والتراث الإماراتي.',
-        },
-      },
-      {
-        "id": '3',
-        "name": {"en": 'FLYBOARD', "ar": 'فلاي بورد'},
-        "icon": '/images/cards/card2.png',
-        "category": 'modern',
-        "description": {
-          "en": 'Traditional rowing that showcases teamwork, endurance, and Emirati heritage.',
-          "ar": 'التجديف التقليدي الذي يجسد العمل الجماعي، والتحمل، والتراث الإماراتي.',
-        },
-      },
-      {
-        "id": '4',
-        "name": {"en": 'WAKEBOARD', "ar": 'ويك بورد'},
-        "icon": '/images/cards/card3.png',
-        "category": 'modern',
-        "description": {
-          "en": 'Traditional rowing that showcases teamwork, endurance, and Emirati heritage.',
-          "ar": 'التجديف التقليدي الذي يجسد العمل الجماعي، والتحمل، والتراث الإماراتي.',
-        },
-      },
-      {
-        "id": '5',
-        "name": {"en": 'JET SKI', "ar": 'جت سكي'},
-        "icon": '/images/cards/card4.png',
-        "category": 'modern',
-        "description": {
-          "en": 'Traditional rowing that showcases teamwork, endurance, and Emirati heritage.',
-          "ar": 'التجديف التقليدي الذي يجسد العمل الجماعي، والتحمل، والتراث الإماراتي.',
-        },
-      },
-      {
-        "id": '6',
-        "name": {"en": 'FORMULA 4', "ar": 'فورمولا 4'},
-        "icon": '/images/cards/card5.png',
-        "category": 'modern',
-        "description": {
-          "en": 'Traditional rowing that showcases teamwork, endurance, and Emirati heritage.',
-          "ar": 'التجديف التقليدي الذي يجسد العمل الجماعي، والتحمل، والتراث الإماراتي.',
-        },
-      },
-      {
-        "id": '7',
-        "name": {"en": 'FORMULA 4', "ar": 'فورمولا 4'},
-        "icon": '/images/cards/card3.png',
-        "category": 'modern',
-        "description": {
-          "en": 'Traditional rowing that showcases teamwork, endurance, and Emirati heritage.',
-          "ar": 'التجديف التقليدي الذي يجسد العمل الجماعي، والتحمل، والتراث الإماراتي.',
-        },
-      },
-      {
-        "id": '8',
-        "name": {"en": 'FORMULA 4', "ar": 'فورمولا 4'},
-        "icon": '/images/cards/card1.png',
-        "category": 'modern',
-        "description": {
-          "en": 'Traditional rowing that showcases teamwork, endurance, and Emirati heritage.',
-          "ar": 'التجديف التقليدي الذي يجسد العمل الجماعي، والتحمل، والتراث الإماراتي.',
-        },
-      },
-    ],
-    "filters": [
-      {"key": 'all', "label": {"en": 'All', "ar": 'الكل'}},
-      {"key": 'traditional', "label": {"en": 'Traditional Races', "ar": 'السباقات التقليدية'}},
-      {"key": 'modern', "label": {"en": 'Modern Races', "ar": 'السباقات الحديثة'}},
-    ],
-  },
-  "experience": {
-    "section_title": {
-      "en": {
-        "line_one": 'Experience',
-        "line_two": 'More Than Marine Sports',
-      },
-      "ar": {
-        "line_one": 'اكتشف',
-        "line_two": 'أكثر من مجرد الرياضات البحرية',
-      },
-    },
-    "content": [
-        {
-            "id": 1,
-            "title": {
-                "en": "Our Services",
-                "ar": "خدماتنا",
-            },
-            "description": {
-                "en": "Discover a range of thrilling marine sports and activities tailored for every adventurer. Join us to experience the excitement!",
-                "ar": "اكتشف مجموعة من الرياضات البحرية والأنشطة المثيرة المصممة لكل مغامر. انضم إلينا لتجربة الحماس!",
-            },
-            "image": "/images/experience/card1.png",
-            "defaultOpen": True,
-        },
-        {
-            "id": 2,
-            "title": {
-                "en": "Team Abu Dhabi",
-                "ar": "فريق أبوظبي",
-            },
-            "description": {
-                "en": "Discover a range of thrilling marine sports and activities tailored for every adventurer. Join us to experience the excitement!",
-                "ar": "اكتشف مجموعة من الرياضات البحرية والأنشطة المثيرة المصممة لكل مغامر. انضم إلينا لتجربة الحماس!",
-            },
-            "image": "/images/experience/card2.png",
-        },
-        {
-            "id": 3,
-            "title": {
-                "en": "ADMSC Magazine",
-                "ar": "مجلة نادي أبوظبي للرياضات البحرية",
-            },
-            "description": {
-                "en": "Discover a range of thrilling marine sports and activities tailored for every adventurer. Join us to experience the excitement!",
-                "ar": "اكتشف مجموعة من الرياضات البحرية والأنشطة المثيرة المصممة لكل مغامر. انضم إلينا لتجربة الحماس!",
-            },
-            "image": "/images/experience/card3.png",
-        },
-    ],
-    
-  },
-  "about": {
+    "about": {
         "title": {
             "en": "ADMSC",
             "ar": "نادي أبوظبي للرياضات البحرية",
@@ -282,7 +291,7 @@ home_data = {
             },
         ],
     },
-  "courses": {
+    "courses": {
         "section_title": {
             "en": "Explore our Academy Courses",
             "ar": "استكشف دورات الأكاديمية لدينا",
@@ -459,7 +468,7 @@ home_data = {
             },
         ],
     },
-  "courses": {
+    "courses": {
         "section_title": {
             "en": "Explore our Academy Courses",
             "ar": "استكشف دورات الأكاديمية لدينا",
@@ -605,7 +614,10 @@ home_data = {
     },
     "advertisement": {
         "headline": {"en": "Join the Waves.", "ar": "انضم إلى الأمواج."},
-        "sub_headline": {"en": "Be Part of ADMSC.", "ar": "كن جزءًا من نادي أبوظبي للرياضات البحرية."},
+        "sub_headline": {
+            "en": "Be Part of ADMSC.",
+            "ar": "كن جزءًا من نادي أبوظبي للرياضات البحرية.",
+        },
         "description": {
             "en": "Experience thrilling marine sports, track events, and stay connected — all in one app.",
             "ar": "استمتع بالرياضات البحرية المثيرة، وتتبع الفعاليات، وابقَ على تواصل — كل ذلك في تطبيق واحد.",
@@ -633,7 +645,11 @@ home_data = {
         "events": {
             "title": {"en": "Events & Services", "ar": "الفعاليات والخدمات"},
             "items": [
-                {"en": "Events & Races", "ar": "الفعاليات والسباقات", "href": "/events/races"},
+                {
+                    "en": "Events & Races",
+                    "ar": "الفعاليات والسباقات",
+                    "href": "/events/races",
+                },
                 {"en": "ADMSC Magazine", "ar": "مجلة نادي أبوظبي", "href": "/magazine"},
                 {"en": "Services", "ar": "الخدمات", "href": "/services"},
                 {"en": "Registration", "ar": "التسجيل", "href": "/registration"},

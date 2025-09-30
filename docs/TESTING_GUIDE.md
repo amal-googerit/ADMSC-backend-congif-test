@@ -129,7 +129,7 @@ make docker-prod
    ```bash
    # If tests pass
    ./scripts/approve-dev.sh
-   
+
    # If tests fail
    ./scripts/reject-dev.sh
    ```
